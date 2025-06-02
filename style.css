@@ -1,0 +1,392 @@
+/* 確保整個容器的基礎樣式良好 */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    color: #4A4A4A;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+}
+
+.mood-selection-section p {
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.mood-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 允許按鈕換行 */
+    gap: 15px; /* 按鈕間距 */
+    margin-bottom: 40px;
+}
+
+.mood-btn {
+    background-color: #884EA0; /* 您的主要按鈕顏色 */
+    color: white;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.mood-btn:hover {
+    background-color: #713c87;
+    transform: translateY(-3px);
+}
+
+/* 推薦區塊的基礎樣式 */
+.recommendation-section {
+    background-color: rgba(240, 240, 240, 0.9);
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 30px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#recommendationText {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.recommendation-song-title {
+    font-weight: bold;
+    color: #884EA0;
+    display: block; /* 確保歌曲名稱獨立一行 */
+    margin-top: 10px;
+}
+
+#videoPlayerContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    margin: 20px auto;
+    background-color: #000; /* 影片載入前的背景 */
+    display: none;
+    max-width: 700px; /* 限制播放器最大寬度 */
+}
+
+#videoPlayerContainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px; /* 影片播放器圓角 */
+}
+
+.song-controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.song-controls button {
+    background-color: #5DADE2; /* 控制按鈕顏色 */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.song-controls button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.song-controls button:hover:not(:disabled) {
+    background-color: #2874A6;
+}
+
+/* 回饋區塊 */
+.feedback-section {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    text-align: center;
+    border: 1px dashed #ccc;
+    display: none;
+}
+
+.feedback-section p {
+    font-size: 1.1em;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.feedback-section button {
+    background-color: #F39C12; /* 回饋按鈕顏色 */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.05em;
+    margin: 0 10px;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-section button:hover {
+    background-color: #E67E22;
+}
+
+#resetBtn {
+    background-color: #7F8C8D; /* 重置按鈕顏色 */
+}
+
+#resetBtn:hover {
+    background-color: #626C6D;
+}
+
+
+/* --- 「我的音樂庫」專屬樣式 (已加強隔離) --- */
+#myMusicLibrarySection {
+    background-color: rgba(240, 240, 240, 0.9) !important; /* 使用 !important 確保覆蓋 */
+    padding: 25px !important;
+    border-radius: 10px !important;
+    margin-top: 30px !important;
+    border: 1px solid #ddd !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1) !important;
+    text-align: center !important;
+    /* display 由 JS 控制，這裡不寫死 */
+}
+
+#myMusicLibrarySection h2 {
+    color: #884EA0 !important;
+    margin-bottom: 25px !important;
+    font-size: 1.8em !important;
+    border-bottom: 2px solid #884EA0 !important;
+    padding-bottom: 10px !important;
+    display: inline-block !important;
+}
+
+/* 新增歌曲表單 - 強制限定在 #myMusicLibrarySection 內 */
+#myMusicLibrarySection .add-song-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    margin-bottom: 30px !important;
+    align-items: center !important;
+}
+
+#myMusicLibrarySection .add-song-form input[type="text"],
+#myMusicLibrarySection .add-song-form input[type="url"] {
+    padding: 12px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 6px !important;
+    font-size: 1.05em !important;
+    width: 80% !important;
+    max-width: 450px !important;
+    box-sizing: border-box !important;
+}
+
+#myMusicLibrarySection .add-song-form button {
+    background-color: #2ECC71 !important;
+    color: white !important;
+    padding: 12px 25px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 1.1em !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+    width: 60% !important;
+    max-width: 250px !important;
+}
+
+#myMusicLibrarySection .add-song-form button:hover {
+    background-color: #28B463 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 我的歌曲列表 - 強制限定在 #myMusicLibrarySection 內 */
+#myMusicLibrarySection .my-songs-list {
+    text-align: left !important;
+    margin-bottom: 25px !important;
+    min-height: 80px !important;
+    max-height: 350px !important; /* 增加高度並顯示滾動條 */
+    overflow-y: auto !important; /* 超出時顯示滾動條 */
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 10px !important;
+    background-color: #fcfcfc !important;
+}
+
+#myMusicLibrarySection .my-songs-list .placeholder-text {
+    color: #888 !important;
+    font-style: italic !important;
+    text-align: center !important;
+    padding: 20px !important;
+}
+
+#myMusicLibrarySection .my-song-item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding: 12px 10px !important;
+    border-bottom: 1px dashed #e0e0e0 !important;
+    transition: background-color 0.2s ease !important;
+}
+
+#myMusicLibrarySection .my-song-item:hover {
+    background-color: #f0f0f0 !important;
+}
+
+#myMusicLibrarySection .my-song-item:last-child {
+    border-bottom: none !important;
+}
+
+#myMusicLibrarySection .my-song-item span {
+    flex-grow: 1 !important;
+    margin-right: 15px !important;
+    font-weight: 500 !important;
+    color: #444 !important;
+    font-size: 1.05em !important;
+    word-break: break-word !important;
+}
+
+#myMusicLibrarySection .my-song-item .actions button {
+    background-color: #6C5B7B !important;
+    color: white !important;
+    padding: 8px 15px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 0.9em !important;
+    margin-left: 8px !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+#myMusicLibrarySection .my-song-item .actions button.delete-btn {
+    background-color: #E74C3C !important;
+}
+
+#myMusicLibrarySection .my-song-item .actions button:hover {
+    background-color: #4F445A !important;
+    transform: translateY(-1px) !important;
+}
+
+#myMusicLibrarySection .my-song-item .actions button.delete-btn:hover {
+    background-color: #C0392B !important;
+    transform: translateY(-1px) !important;
+}
+
+/* 新增的下拉式選單樣式 - 強制限定在 #myMusicLibrarySection 內 */
+#myMusicLibrarySection .my-music-search {
+    display: flex !important; /* 這個屬性會由 JS 控制，這裡確保它的初始值 */
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-bottom: 25px !important;
+    padding: 15px !important;
+    background-color: #e9ecef !important;
+    border-radius: 8px !important;
+    border: 1px solid #dee2e6 !important;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.05) !important;
+}
+
+#myMusicLibrarySection .my-music-search label {
+    font-weight: bold !important;
+    color: #555 !important;
+    white-space: nowrap !important;
+}
+
+#myMusicLibrarySection .my-music-search select {
+    padding: 10px 15px !important;
+    border: 1px solid #ced4da !important;
+    border-radius: 6px !important;
+    background-color: #f8f9fa !important;
+    font-size: 1.0em !important;
+    color: #495057 !important;
+    flex-grow: 1 !important;
+    max-width: 300px !important;
+    appearance: none !important;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23495057%22%20d%3D%22M287%2069.9H5.4c-7.9%200-11.3%209.6-5.7%2015.6l140.7%20140.7c3.1%203.1%208.2%203.1%2011.3%200l140.7-140.7c5.6-6-1-15.6-5.7-15.6z%22%2F%3E%3C%2Fsvg%3E') !important;
+    background-repeat: no-repeat !important;
+    background-position: right 10px center !important;
+    background-size: 12px !important;
+    cursor: pointer !important;
+}
+
+#myMusicLibrarySection .my-music-search select:focus {
+    border-color: #80bdff !important;
+    outline: 0 !important;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+}
+
+#myMusicLibrarySection .my-music-search button {
+    background-color: #007bff !important;
+    color: white !important;
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    font-size: 1.0em !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+}
+
+#myMusicLibrarySection .my-music-search button:hover {
+    background-color: #0056b3 !important;
+    transform: translateY(-1px) !important;
+}
+
+
+/* 返回風格選擇按鈕 - 強制限定在 #myMusicLibrarySection 內 */
+#myMusicLibrarySection #backToMoodsBtn {
+    background-color: #6c757d !important;
+    color: white !important;
+    padding: 12px 25px !important;
+    border: none !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    font-size: 1.05em !important;
+    transition: background-color 0.3s ease, transform 0.2s ease !important;
+    margin-top: 25px !important;
+}
+
+#myMusicLibrarySection #backToMoodsBtn:hover {
+    background-color: #5a6268 !important;
+    transform: translateY(-2px) !important;
+}
+
+/* 針對小螢幕設備的響應式調整 - 強制限定在 #myMusicLibrarySection 內 */
+@media (max-width: 600px) {
+    #myMusicLibrarySection .add-song-form input,
+    #myMusicLibrarySection .add-song-form button {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    #myMusicLibrarySection .my-music-search {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+    #myMusicLibrarySection .my-music-search select,
+    #myMusicLibrarySection .my-music-search button {
+        width: 100% !important;
+        max-width: none !important;
+    }
+}

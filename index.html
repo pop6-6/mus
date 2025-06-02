@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音樂風格館 - 探索您的曲風</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>音樂風格館</h1>
+
+        <div class="mood-selection-section">
+            <p>您想聽哪種音樂風格？請點選：</p>
+            <div class="mood-buttons">
+                <button class="mood-btn" data-mood="流行樂">流行樂</button>
+                <button class="mood-btn" data-mood="R&B">R&B</button>
+                <button class="mood-btn" data-mood="嘻哈音樂">嘻哈音樂</button>
+                <button class="mood-btn" data-mood="鄉村音樂">鄉村音樂</button>
+                <button class="mood-btn" data-mood="我的音樂庫">我的音樂庫</button>
+            </div>
+        </div>
+
+        <div class="recommendation-section" id="recommendationSection">
+            <p id="recommendationText"></p>
+            <div id="videoPlayerContainer"></div>
+            <div class="song-controls" style="display: none;">
+                <button id="prevSongBtn" disabled>上一首</button>
+                <button id="nextSongBtn" disabled>下一首</button>
+            </div>
+        </div>
+
+        <div class="my-music-library-section" id="myMusicLibrarySection" style="display: none;">
+            <h2>我的音樂庫</h2>
+
+            <div class="add-song-form">
+                <input type="text" id="songTitleInput" placeholder="歌曲名稱" required>
+                <input type="url" id="songUrlInput" placeholder="YouTube 影片連結 (例如: https://www.youtube.com/embed/B1tArM5XYuc?si=8Ctdjp3UtINAVL8K9)" required>
+                <button id="addSongBtn">加入音樂</button>
+            </div>
+
+            <div class="my-music-search" style="display: none;">
+                <label for="songDropdown">快速尋找歌曲：</label>
+                <select id="songDropdown"></select>
+                <button id="playSelectedSongBtn">播放選取歌曲</button>
+            </div>
+
+            <div class="my-songs-list" id="mySongsList">
+                <p class="placeholder-text">目前沒有歌曲，快來新增吧！</p>
+                </div>
+            <button id="backToMoodsBtn" class="mood-btn">返回風格選擇</button>
+        </div>
+
+        <div class="feedback-section" id="feedbackSection" style="display: none;">
+            <p>喜歡這次的推薦嗎？</p>
+            <button id="likeBtn">喜歡</button>
+            <button id="dislikeBtn">不喜歡</button>
+            <button id="resetBtn">重新選擇風格</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
